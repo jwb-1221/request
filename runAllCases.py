@@ -20,7 +20,6 @@ def run_case(all_case,result_path=config.TEST_REPORT):
     runner.run(all_case)
     fp.close()
     report = new_report.new_report(config.TEST_REPORT) #调用模块生成最新的报告
-    # time.sleep()
     send_mail.SEND_MAIL().send_mail("2514095967@qq.com",report) #调用发送邮件模块
 if __name__ == "__main__":
     cases = add_case()
