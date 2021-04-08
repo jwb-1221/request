@@ -9,8 +9,6 @@ import configparser as cparser
 from common import config
 import pymysql
 import json
-
-
 # --------- 读取config.ini配置文件 ---------------
 cf = cparser.ConfigParser()#读取配置文件（config.ini）的代码
 cf.read(config.CONFIG,encoding='UTF-8')

@@ -15,10 +15,10 @@ class SEND_MAIL():
     def send_mail(self,TO):
         user = USER  # 发送邮箱的账号
         password = PASSWORD  # 发送邮箱的密码
-        sendfile = open(new_report.new_report(config.TEST_REPORT), 'wb').read()
-        att = MIMEText(sendfile, 'base64', 'utf-8')
-        att["Content-Type"] = 'application/octet-stream'
-        att.add_header("Content-Disposition", "attachment", filename=("gbk", "", new_report.new_report(config.TEST_REPORT)))
+        # sendfile = open(new_report.new_report(config.TEST_REPORT), 'wb').read()
+        # att = MIMEText(sendfile, 'base64', 'utf-8')
+        # att["Content-Type"] = 'application/octet-stream'
+        # att.add_header("Content-Disposition", "attachment", filename=("gbk", "", new_report.new_report(config.TEST_REPORT)))
             # host 和 port网上很容易百度出来
         yag = yagmail.SMTP(user=user,password=password,host="smtp.163.com",port=465)
         # 收件人的邮箱
@@ -33,4 +33,4 @@ class SEND_MAIL():
         yag.send(to=to, subject=subject, contents=contents)
         print('邮件发送成功')
 if __name__=="__main__":
-    SEND_MAIL().send_mail('2514095967@qq.com',report1=new_report.new_report(config.TEST_REPORT))
+    SEND_MAIL().send_mail('2514095967@qq.com')
