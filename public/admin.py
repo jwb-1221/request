@@ -2,9 +2,6 @@
 # _*_ coding:utf-8 _*_
 __author__ = 'BIN'
 import requests
-from PIL import ImageGrab
-import unittest
-import time
 from common import login
 from common.URL import *
 def selectTaxpayerPage():#纳税人列表
