@@ -29,5 +29,5 @@ s = requests.session()
 r = s.post(url, headers=headers, data=body)
 print(r.json()["data"])
 sql = "SELECT id,user_name FROM tb_user_app WHERE user_name = '' or certificate_no = '' or phone = '15818468674';"
-print(MYSQL().mysql(sql))
+MYSQL().mysql(sql)
 
