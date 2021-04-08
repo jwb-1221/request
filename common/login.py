@@ -9,9 +9,6 @@ from common.URL import *
 from openpyxl import load_workbook
 from common.config import *
 import shutil
-
-
-
 class Login():
     def adminlogin(self):
         "这是运营端登陆"
