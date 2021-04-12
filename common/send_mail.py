@@ -20,11 +20,12 @@ class SEND_MAIL():
         f = open(new_report.new_report(config.TEST_REPORT), 'rb')
         user = USER  # 发送邮箱的账号，config.ini有配置
         password = PASSWORD  # 发送邮箱的密码，config.ini有配置
+        text = "斌"
         yag = yagmail.SMTP(user=user,password=password,host="smtp.163.com",port=465)
         to = TO#收件人邮件
         subject = SUBJECT#主题
         contents = [
-            "斌",new_report.new_report(config.TEST_REPORT)
+            text,new_report.new_report(config.TEST_REPORT)
         ]
         yag.send(to=to, subject=subject, contents=contents)
         print('邮件发送成功')
