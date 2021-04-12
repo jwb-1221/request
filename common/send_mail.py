@@ -11,23 +11,20 @@ con.read(config.CONFIG, encoding='utf-8')
 USER = con.get("user","user")
 PASSWORD = con.get("user","password")
 SUBJECT = con.get("user","subject")
-
-
-
-
 class SEND_MAIL():
     def send_mail(self,TO,):
         f = open(new_report.new_report(config.TEST_REPORT), 'rb')
         user = USER  # 发送邮箱的账号，config.ini有配置
         password = PASSWORD  # 发送邮箱的密码，config.ini有配置
-        text1 = "斌"
+        text = "斌"#输入的文本信息
+        file = new_report.new_report(config.TEST_REPORT)
         yag = yagmail.SMTP(user=user,password=password,host="smtp.163.com",port=465)
         to = TO#收件人邮件
         subject = SUBJECT#主题
         contents = [
-            text1,new_report.new_report(config.TEST_REPORT)
+            text,file
         ]
         yag.send(to=to, subject=subject, contents=contents)
         print('邮件发送成功')
 if __name__=="__main__":
-    SEND_MAIL().send_mail('2514095967@qq.com')
+    SEND_MAIL().send_mail(TO='2514095967@qq.com''chen15927704771@163.com')
