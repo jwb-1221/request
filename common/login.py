@@ -26,7 +26,6 @@ class Login():
         }
         r = requests.post(url, headers=headers, data=body)
         token = (r.json()["data"]["token"])
-        return token
         if not os.path.exists(TEST_TOKEN):  # 检查文件是否存在
             shutil.copyfile(TEST_CONFIG,TEST_TOKEN) #不存在则从测试用例复制一份
         self.wb = load_workbook(TEST_TOKEN)
@@ -35,7 +34,6 @@ class Login():
         for i in range(2,self.max_row):
             self.ws.cell(i, 5, '{"Authorization":"' + token + '"}')#把获取的token写进excel表格的每行用例中
             self.wb.save(TEST_TOKEN)#保存表格
-            time.sleep(3)
     def merchantlogin(self):
         "这是商户端登录"
         url = merchanturl("login")

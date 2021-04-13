@@ -23,6 +23,7 @@ class API_demo(unittest.TestCase):
         self.s = requests.session()
     @ddt.data(*testDATA)
     def test_api(self,data):
+        login.Login().adminlogin()
         rowNum = int(data['ID'].split("_")[1])
         print("******* 正在执行用例 ->{0} *********".format(data['模块']))
         print("请求方式: {0}，请求URL: {1}".format(data['method'],data['url']))
@@ -40,5 +41,6 @@ class API_demo(unittest.TestCase):
     def tearDown(self):
         pass
 if __name__=='__main__':
+    login.Login().adminlogin()
     API_demo().test_api()
     send_mail.SEND_MAIL().send_mail('2514095967@qq.com')

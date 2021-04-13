@@ -20,7 +20,7 @@ class ReadExcel():
 
         # 获取总行数、总列数
         self.nrows = self.table.nrows
-        print(self.nrows)
+        print("一共有"+str(self.nrows-1)+"条用例")
         #第一个sheet获取的行数赋予nrows
         self.ncols = self.table.ncols
         #第一个sheet获取的列数赋予ncols

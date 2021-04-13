@@ -18,11 +18,12 @@ class SEND_MAIL():
         password = PASSWORD  # 发送邮箱的密码，config.ini有配置
         text = "斌"#输入的文本信息
         file = new_report.new_report(config.TEST_REPORT)#调用获取html附件的函数
+        file1 = config.TEST_RESULT
         yag = yagmail.SMTP(user=user,password=password,host="smtp.163.com",port=465)
         to = TO#收件人邮件
         subject = SUBJECT#主题
         contents = [
-            text,file
+            text,file,file1
         ]
         yag.send(to=to, subject=subject, contents=contents)
         print('邮件发送成功')

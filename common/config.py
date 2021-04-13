@@ -15,7 +15,7 @@ TEST_CONFIG = os.path.join(config,"config","testcase.xlsx")
 #测试用例写入token模板
 TEST_TOKEN = os.path.join(config,"config","token.xlsx")
 #测试用例结果模板
-TEST_RESULT = os.path.join(config,"config","TEST_RESULT.xlsx")
+TEST_RESULT = os.path.join(config,"config","测试结果表格.xlsx")
 #html测试报告文件
 TEST_HTML = os.path.join(config,"reports","2021-03-01.html")
 #测试报告
