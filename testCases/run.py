@@ -41,6 +41,5 @@ class API_demo(unittest.TestCase):
     def tearDown(self):
         pass
 if __name__=='__main__':
-    login.Login().adminlogin()
     API_demo().test_api()
     send_mail.SEND_MAIL().send_mail('2514095967@qq.com')
