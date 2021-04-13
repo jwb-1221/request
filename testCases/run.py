@@ -31,17 +31,14 @@ class API_demo(unittest.TestCase):
         print("post请求body类型为：{0} ,body内容为：{1}".format(data['type'], data['body']))
         # 发送请求
         re = SendRequests.sendRequests(self,self.s,data)
-        fail = "测试没有通过，报错了"
         try:
             re.json()["message"] == "成功"
         except AttributeError as e:
             write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum+1,"fail")
-        # # 获取服务端返回的值
         else:
             write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum + 1, "pass")
-        # print(self.result)
     def tearDown(self):
         pass
 if __name__=='__main__':
     API_demo().test_api()
-    send_mail.SEND_MAIL().send_mail('2514095967@qq.com', new_report.new_report(config.TEST_REPORT))
+    send_mail.SEND_MAIL().send_mail('2514095967@qq.com')

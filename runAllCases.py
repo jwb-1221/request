@@ -11,12 +11,11 @@ def add_case(test_path=config.TEST_CASE):
     discover = unittest.defaultTestLoader.discover(test_path, pattern='*API.py')
     return discover
 def run_case(all_case,result_path=config.TEST_REPORT):
-    """执行所有的测试用例"""
-    # 初始化接口测试数据
+    title = "接口自动化测试报告"#html附件的标题
     now = time.strftime("%Y-%m-%d-%H_%M_%S")
     filename =  result_path + '/' + now + '.html'
     fp = open(filename,'wb')
-    runner = HTMLTestRunner(stream=fp, title="云账户测试报告", description="用例执行情况")
+    runner = HTMLTestRunner(stream=fp, title=title, description="用例执行情况")
     runner.run(all_case)
     fp.close()
     send_mail.SEND_MAIL().send_mail("2514095967@qq.com") #调用发送邮件模块

@@ -9,5 +9,4 @@ def new_report(testreport):
     file_new1 = str(file_new)#转换为字符串类型
     return file_new1
 if __name__=='__main__':
-    # new_report(config.TEST_REPORT)
     print(new_report(config.TEST_REPORT))
