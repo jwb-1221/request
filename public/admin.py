@@ -10,7 +10,6 @@ def selectTaxpayerPage():#纳税人列表
         {
         "Content-Type": "application/x-www-form-urlencoded",
         "Authorization":login.Login().adminlogin()}
-
     d = \
         {
         "ageNum":"1",
@@ -24,7 +23,6 @@ def selectTaxpayerPage():#纳税人列表
         "authStatus":"",
         "signStatus":""
     }
-
     s = requests.session()
     r = s.post(url, headers=headers, data=d)
     print(r.json()["data"]["token"])
