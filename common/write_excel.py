@@ -46,7 +46,6 @@ class WriteExcel():
         M_n = "M" + str(row_n)
         if value == "pass":
             self.ws.cell(row_n, 8, value).font = font_GREEN
-        # self.ws[L_n].font = font_RED
         if value == "fail":
             self.ws.cell(row_n, 8, value).font = font_RED
         self.ws.cell(row_n,9, name).font = font_purple

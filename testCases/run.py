@@ -37,7 +37,7 @@ class API_demo(unittest.TestCase):
         except AttributeError as e:
             write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum+1,"fail")
         else:
-            write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum + 1, "pass")
+            write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum+1,"pass")
     def tearDown(self):
         pass
 if __name__=='__main__':

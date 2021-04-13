@@ -11,6 +11,7 @@ con.read(config.CONFIG, encoding='utf-8')
 USER = con.get("user","user")
 PASSWORD = con.get("user","password")
 SUBJECT = con.get("user","subject")
+
 class SEND_MAIL():
     def send_mail(self,TO,):
         f = open(new_report.new_report(config.TEST_REPORT), 'rb')
@@ -23,7 +24,7 @@ class SEND_MAIL():
         to = TO#收件人邮件
         subject = SUBJECT#主题
         contents = [
-            text,file,file1
+            file,file1
         ]
         yag.send(to=to, subject=subject, contents=contents)
         print('邮件发送成功')
