@@ -3,4 +3,5 @@ from common import config,new_report,send_mail
 # print(aa.replace("\\", "/"))
 # send_mail.SEND_MAIL().send_mail('2514095967@qq.com',report=aa.replace("\\", "/"))
 to = input("请输入要发送的邮箱：")
+
 send_mail.SEND_MAIL().send_mail(TO=to)
