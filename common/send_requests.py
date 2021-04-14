@@ -36,5 +36,5 @@ class SendRequests():
         except Exception as e:
             print(e)
 
-if __name__=='__main__':
-    SendRequests().sendRequests()
+# if __name__=='__main__':
+#     SendRequests().sendRequests()

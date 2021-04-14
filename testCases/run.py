@@ -40,6 +40,6 @@ class API_demo(unittest.TestCase):
             write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum+1,"pass")
     def tearDown(self):
         pass
-if __name__=='__main__':
-    API_demo().test_api()
-    send_mail.SEND_MAIL().send_mail('2514095967@qq.com')
+# if __name__=='__main__':
+#     API_demo().test_api()
+#     send_mail.SEND_MAIL().send_mail('2514095967@qq.com')

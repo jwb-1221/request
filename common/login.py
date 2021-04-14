@@ -52,5 +52,5 @@ class Login():
         token = (r.json()["data"]["token"])
         return token
 
-if __name__ == '__main__':
-    Login().adminlogin()
+# if __name__ == '__main__':
+#     Login().adminlogin()
