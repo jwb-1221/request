@@ -28,5 +28,5 @@ class SEND_MAIL():
         ]
         yag.send(to=to, subject=subject, contents=contents)
         print('邮件发送成功')
-if __name__=="__main__":
-    SEND_MAIL().send_mail('2514095967@qq.com')
+# if __name__=="__main__":
+#     SEND_MAIL().send_mail('2514095967@qq.com')

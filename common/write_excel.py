@@ -52,5 +52,5 @@ class WriteExcel():
         self.ws[L_n].alignment = align
         self.ws[M_n].alignment = align
         self.wb.save(self.filename)
-if __name__=='__main__':
-    WriteExcel(config.TEST_RESULT).write_data(5,'FAIL')
+# if __name__=='__main__':
+#     WriteExcel(config.TEST_RESULT).write_data(5,'FAIL')
