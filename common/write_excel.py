@@ -48,7 +48,7 @@ class WriteExcel():
             self.ws.cell(row_n, 8, value).font = font_GREEN
         if value == "fail":
             self.ws.cell(row_n, 8, value).font = font_RED
-        self.ws.cell(row_n,9, name).font = font_purple
+        self.ws.cell(row_n,10, name).font = font_purple#写入测试员
         self.ws[L_n].alignment = align
         self.ws[M_n].alignment = align
         self.wb.save(self.filename)
