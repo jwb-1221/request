@@ -42,6 +42,6 @@ class ReadExcel():
             # return (self.nrows[URl])
         else:
             print("表格是空数据!")
-if __name__=='__main__':
-    print(ReadExcel(config.TEST_CONFIG).read_Excel())
+# if __name__=='__main__':
+#     print(ReadExcel(config.TEST_CONFIG).read_Excel())
 

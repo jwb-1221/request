@@ -22,4 +22,3 @@ TEST_HTML = os.path.join(config,"reports","2021-03-01.html")
 TEST_REPORT = os.path.join(config,"reports")
 # 测试用例程序文件
 TEST_CASE = os.path.join(config,"testCases")
-

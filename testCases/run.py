@@ -16,7 +16,7 @@ if os.path.exists(config.TEST_TOKEN):  # 如果文件存在
 else:
     print("测试token文件不存在")
 login.Login().adminlogin()
-testDATA =read_excel.ReadExcel(config.TEST_CONFIG,"Sheet1").read_Excel()
+testDATA =read_excel.ReadExcel(config.TEST_TOKEN,"Sheet1").read_Excel()
 @ddt.ddt
 class API_demo(unittest.TestCase):
     def setUp(self):
@@ -32,12 +32,14 @@ class API_demo(unittest.TestCase):
         print("post请求body类型为：{0} ,body内容为：{1}".format(data['type'], data['body']))
         # 发送请求
         re = SendRequests.sendRequests(self,self.s,data)
+        print(re.json())
         try:
-            re.json()["message"] == "成功"
+            re.json()["status"] == "0"
         except AttributeError as e:
             write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum+1,"fail")
         else:
             write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum+1,"pass")
+        write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum + 1,re.json())
     def tearDown(self):
         pass
 if __name__=='__main__':
