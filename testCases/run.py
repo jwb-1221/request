@@ -3,7 +3,7 @@
 __author__ = 'BIN'
 import os,sys
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-import unittest,requests,ddt
+import unittest,requests,ddt,time
 from common import read_excel,config,write_excel,login
 from common.send_requests import *
 from common import new_report,send_mail
@@ -21,9 +21,10 @@ testDATA =read_excel.ReadExcel(config.TEST_TOKEN,"Sheet1").read_Excel()
 class API_demo(unittest.TestCase):
     def setUp(self):
         self.s = requests.session()
+        login.Login().adminlogin()
     @ddt.data(*testDATA)
     def test_api(self,data):
-        login.Login().adminlogin()
+        # login.Login().adminlogin()
         rowNum = int(data['ID'].split("_")[1])
         print("******* 正在执行用例 ->{0} *********".format(data['模块']))
         print("请求方式: {0}，请求URL: {1}".format(data['method'],data['url']))
@@ -39,7 +40,7 @@ class API_demo(unittest.TestCase):
             write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum+1,"fail")
         else:
             write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum+1,"pass")
-        write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum + 1,re.json())
+        # write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum + 1,re.json())
     def tearDown(self):
         pass
 if __name__=='__main__':
