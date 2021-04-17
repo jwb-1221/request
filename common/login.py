@@ -18,7 +18,7 @@ class Login():
         }
         body = \
         {
-            "username": "ADMin",
+            "username": "ADmin",
             "password": "123456.",
             "verificationCode": "99999",
             "loginStatus": "0"
