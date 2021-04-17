@@ -30,7 +30,7 @@ class Login():
         self.wb = load_workbook(TEST_TOKEN)
         self.ws = self.wb.active
         self.max_row = self.ws.max_row  #获取最大的有效行数
-        for i in range(2,self.max_row):
+        for i in range(1,self.max_row):
             self.ws.cell(i+1, 5, '{"Authorization":"' + token + '"}')#把获取的token写进excel表格的每行用例中
             self.wb.save(TEST_TOKEN)#保存表格
     def merchantlogin(self):
