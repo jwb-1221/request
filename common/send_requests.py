@@ -22,7 +22,7 @@ class SendRequests():
                 body_data = eval(apiData["body"])
             type = apiData["type"]
             v = False
-            if type == "data":
+            if type == "application/x-www-form-urlencoded":
                 body = body_data
             elif type == "json":
                 body = json.dumps(body_data)
@@ -36,5 +36,5 @@ class SendRequests():
         except Exception as e:
             print(e)
 
-if __name__=='__main__':
-    SendRequests().sendRequests()
+# if __name__=='__main__':
+#     SendRequests().sendRequests()

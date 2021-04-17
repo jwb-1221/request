@@ -3,7 +3,7 @@
 __author__ = 'BIN'
 import os,sys
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-import unittest,requests,ddt
+import unittest,requests,ddt,time
 from common import read_excel,config,write_excel,login
 from common.send_requests import *
 from common import new_report,send_mail
@@ -16,14 +16,15 @@ if os.path.exists(config.TEST_TOKEN):  # 如果文件存在
 else:
     print("测试token文件不存在")
 login.Login().adminlogin()
-testDATA =read_excel.ReadExcel(config.TEST_CONFIG,"Sheet1").read_Excel()
+testDATA =read_excel.ReadExcel(config.TEST_TOKEN,"Sheet1").read_Excel()
 @ddt.ddt
 class API_demo(unittest.TestCase):
     def setUp(self):
         self.s = requests.session()
+        login.Login().adminlogin()
     @ddt.data(*testDATA)
     def test_api(self,data):
-        login.Login().adminlogin()
+        # login.Login().adminlogin()
         rowNum = int(data['ID'].split("_")[1])
         print("******* 正在执行用例 ->{0} *********".format(data['模块']))
         print("请求方式: {0}，请求URL: {1}".format(data['method'],data['url']))
@@ -32,15 +33,16 @@ class API_demo(unittest.TestCase):
         print("post请求body类型为：{0} ,body内容为：{1}".format(data['type'], data['body']))
         # 发送请求
         re = SendRequests.sendRequests(self,self.s,data)
+        print(re.json())
         try:
-            re.json()["message"] == "成功"
+            re.json()["massage"] == "成功"
         except AttributeError as e:
             write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum+1,"fail")
         else:
             write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum+1,"pass")
+        write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum + 1,re.json())
     def tearDown(self):
         pass
 if __name__=='__main__':
-    login.Login().adminlogin()
     API_demo().test_api()
     send_mail.SEND_MAIL().send_mail('2514095967@qq.com')
