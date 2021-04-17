@@ -35,11 +35,12 @@ class API_demo(unittest.TestCase):
         re = SendRequests.sendRequests(self,self.s,data)
         print(re.json())
         try:
-            re.json()["message"] == "成功"
+            re.json()["status"] == "0"
         except AttributeError as e:
             write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum+1,"fail")
         else:
             write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum+1,"pass")
+        write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum + 1,re.json())
     def tearDown(self):
         pass
 if __name__=='__main__':

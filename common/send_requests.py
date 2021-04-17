@@ -22,7 +22,7 @@ class SendRequests():
                 body_data = eval(apiData["body"])
             type = apiData["type"]
             v = False
-            if type == "application/x-www-form-urlencoded":
+            if type == "data":
                 body = body_data
             elif type == "json":
                 body = json.dumps(body_data)
