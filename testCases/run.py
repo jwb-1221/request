@@ -40,7 +40,7 @@ class API_demo(unittest.TestCase):
             write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum+1,"fail")
         else:
             write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum+1,"pass")
-        write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum + 1,re.json())
+        # write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum + 1,re.json())
     def tearDown(self):
         pass
 if __name__=='__main__':
