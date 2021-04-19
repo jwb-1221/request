@@ -48,11 +48,14 @@ class WriteExcel():
             self.ws.cell(row_n, 8, value).font = font_GREEN
         elif value == "fail":
             self.ws.cell(row_n, 8, value).font = font_RED
-        elif value != "fail"or"pass":
-            self.ws.cell(row_n, 9, value).font = font_purple  # 写入接口返回结果
+        self.ws.cell(row_n, 9, value).font = font_purple  # 写入接口返回结果
         self.ws.cell(row_n,10, name).font = font_purple#写入测试员
         self.ws[L_n].alignment = align
         self.ws[M_n].alignment = align
         self.wb.save(self.filename)
+class Write(WriteExcel.write_data):
+    def write(self):
+        pass
+
 # if __name__=='__main__':
 #     WriteExcel(config.TEST_RESULT).write_data(5,'FAIL')
