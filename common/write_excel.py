@@ -26,7 +26,7 @@ class WriteExcel():
         self.filename = fileName
         if not os.path.exists(self.filename):
             # 文件不存在，则拷贝模板文件至指定报告目录下
-            shutil.copyfile(config.TEST_CONFIG,config.TEST_RESULT)
+            shutil.copyfile(config.TEST_TOKEN,config.TEST_RESULT)
         self.wb = load_workbook(self.filename)
         self.ws = self.wb.active
 
@@ -48,8 +48,8 @@ class WriteExcel():
             self.ws.cell(row_n, 8, value).font = font_GREEN
         elif value == "fail":
             self.ws.cell(row_n, 8, value).font = font_RED
-        # elif value != "pass" or "fail":
-        #     self.ws.cell(row_n, 9, value).font = font_purple  # 写入接口返回结果
+        elif value != "fail"or"pass":
+            self.ws.cell(row_n, 9, value).font = font_purple  # 写入接口返回结果
         self.ws.cell(row_n,10, name).font = font_purple#写入测试员
         self.ws[L_n].alignment = align
         self.ws[M_n].alignment = align

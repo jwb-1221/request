@@ -26,7 +26,7 @@ class API_demo(unittest.TestCase):
     def test_api(self,data):
         # login.Login().adminlogin()
         rowNum = int(data['ID'].split("_")[1])
-        print("******* 正在执行用例 ->{0} *********".format(data['模块']))
+        print("******* 正在执行第"+str(rowNum)+"条用例 ->{0} *********".format(data['模块']))
         print("请求方式: {0}，请求URL: {1}".format(data['method'],data['url']))
         print("请求头信息: {0}".format(data['headers']))
         print("请求参数: {0}".format(data['body']))
@@ -34,13 +34,28 @@ class API_demo(unittest.TestCase):
         # 发送请求
         re = SendRequests.sendRequests(self,self.s,data)
         print(re.json())
-        try:
-            re.json()["status"] == "0"
-        except AttributeError as e:
+        if re.json()["code"] == "401"or"500":
             write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum+1,"fail")
-        else:
+            write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum+1,str(re.json()))
+        elif re.json()["code"] == "0":
             write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum+1,"pass")
-        # write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum + 1,re.json())
+            write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum+1,str(re.json()))
+        elif re.json()["status"] == "403":
+            write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum+1,"fail")
+            write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum+1,str(re.json()))
+        elif re.json()["message"] == "成功":
+            write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum+1,"pass")
+            write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum+1,str(re.json()))
+
+
+
+
+        # try:
+        #     re.json()["status"] == "0"
+        # except AttributeError as e:
+        #     write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum+1,"fail")
+        # else:
+        #     write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum+1,"pass")
     def tearDown(self):
         pass
 if __name__=='__main__':
