@@ -24,7 +24,6 @@ def selectTaxpayerPage():#纳税人列表
         "authStatus":"",
         "signStatus":""
     }
-
     s = requests.session()
     r = s.post(url, headers=headers, data=d)
     print(r.json()["data"]["token"])
