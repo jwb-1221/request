@@ -19,6 +19,11 @@ import configparser as cparser
 cf = cparser.ConfigParser()
 cf.read(config.CONFIG,encoding='utf-8')
 name = cf.get("tester","name")
+font_RED = Font(name='宋体', color='FF0000', bold=True)
+font_GREEN = Font(name='宋体', color='00ff00', bold=True)
+font_purple = Font(name='宋体', color='9900cc', bold=True)
+align = Alignment(horizontal='center', vertical='center')
+
 
 class WriteExcel():
     """文件写入数据"""
@@ -30,32 +35,31 @@ class WriteExcel():
         self.wb = load_workbook(self.filename)
         self.ws = self.wb.active
 
-    def write_data(self,row_n,value):
+    def write_result(self,row_n,value):
         """
         写入测试结果
         :param row_n:数据所在行数
         :param value: 测试结果值
-        :return: 无
         """
-        font_RED = Font(name='宋体', color='FF0000', bold=True)
-        font_GREEN = Font(name='宋体', color='00ff00', bold=True)
-        font_purple = Font(name='宋体', color='9900cc', bold=True)
-        align = Alignment(horizontal='center', vertical='center')
         # 获数所在行数
-        L_n = "L" + str(row_n)
-        M_n = "M" + str(row_n)
+        # L_n = "L" + str(row_n)
+        # M_n = "M" + str(row_n)
         if value == "pass":
             self.ws.cell(row_n, 8, value).font = font_GREEN
+
         elif value == "fail":
             self.ws.cell(row_n, 8, value).font = font_RED
-        self.ws.cell(row_n, 9, value).font = font_purple  # 写入接口返回结果
-        self.ws.cell(row_n,10, name).font = font_purple#写入测试员
-        self.ws[L_n].alignment = align
-        self.ws[M_n].alignment = align
+        # self.ws[L_n].alignment = align
+        # self.ws[M_n].alignment = align
         self.wb.save(self.filename)
-class Write(WriteExcel.write_data):
-    def write(self):
-        pass
+    def write_name(self,row_n,value = name):
+        self.ws.cell(row_n,10, value).font = font_purple#写入测试员
+        self.wb.save(self.filename)
+    def write_anomaly(self):
+        """异常写入值方法"""
+
+
+
 
 # if __name__=='__main__':
 #     WriteExcel(config.TEST_RESULT).write_data(5,'FAIL')
