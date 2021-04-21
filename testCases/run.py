@@ -36,11 +36,11 @@ class API_demo(unittest.TestCase):
         print(re.json())
         try:
             re.json()["code"] == "0"
-        except:
+        except:#报错就执行
             write_excel.WriteExcel(config.TEST_RESULT).write_result(rowNum + 1, "fail")
-        else:
+        else:#不报错就执行
             write_excel.WriteExcel(config.TEST_RESULT).write_result(rowNum+1,"pass")
-        finally:
+        finally:#无论报不报错都执行
             write_excel.WriteExcel(config.TEST_RESULT).write_name(rowNum + 1, "bin")
         # try:
         #     re.json()["status"] == "0"
@@ -50,7 +50,7 @@ class API_demo(unittest.TestCase):
         #     write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum+1,"pass")
     def tearDown(self):
         pass
-    
+
 if __name__=='__main__':
     API_demo().test_api()
     send_mail.SEND_MAIL().send_mail('2514095967@qq.com')

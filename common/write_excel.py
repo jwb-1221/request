@@ -24,7 +24,6 @@ font_GREEN = Font(name='宋体', color='00ff00', bold=True)
 font_purple = Font(name='宋体', color='9900cc', bold=True)
 align = Alignment(horizontal='center', vertical='center')
 
-
 class WriteExcel():
     """文件写入数据"""
     def __init__(self,fileName):
@@ -38,8 +37,8 @@ class WriteExcel():
     def write_result(self,row_n,value):
         """
         写入测试结果
-        :param row_n:数据所在行数
-        :param value: 测试结果值
+        row_n:数据所在行数
+        value: 测试结果值
         """
         # 获数所在行数
         # L_n = "L" + str(row_n)
@@ -53,12 +52,11 @@ class WriteExcel():
         # self.ws[M_n].alignment = align
         self.wb.save(self.filename)
     def write_name(self,row_n,value = name):
+        """写入测试员方法"""
         self.ws.cell(row_n,10, value).font = font_purple#写入测试员
         self.wb.save(self.filename)
     def write_anomaly(self):
-        """异常写入值方法"""
-
-
+        """如果异常写入值方法"""
 
 
 # if __name__=='__main__':
