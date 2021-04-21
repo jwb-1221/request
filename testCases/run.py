@@ -35,26 +35,13 @@ class API_demo(unittest.TestCase):
         re = SendRequests.sendRequests(self,self.s,data)
         print(re.json())
         try:
-            re.json()["status"] == "0"
-        except KeyError:
-            write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum+1,"报错了")
-            write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum + 1, "fail")
-
+            re.json()["code"] == "0"
+        except:
+            write_excel.WriteExcel(config.TEST_RESULT).write_result(rowNum + 1, "fail")
         else:
-            if re.json()["code"] == "401"or"500":
-                write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum+1,"fail")
-                write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum+1,str(re.json()))
-            elif re.json()["code"] == "0":
-                write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum+1,"pass")
-                write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum+1,str(re.json()))
-            elif re.json()["status"] == "403":
-                write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum+1,"fail")
-                write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum+1,str(re.json()))
-            elif re.json()["message"] == "成功":
-                write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum+1,"pass")
-                write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum+1,str(re.json()))
-
-
+            write_excel.WriteExcel(config.TEST_RESULT).write_result(rowNum+1,"pass")
+        finally:
+            write_excel.WriteExcel(config.TEST_RESULT).write_name(rowNum + 1, "bin")
         # try:
         #     re.json()["status"] == "0"
         # except AttributeError as e:

@@ -28,7 +28,6 @@ class SendRequests():
                 body = json.dumps(body_data)
             else:
                 body = body_data
-
             #发送请求
             re = s.request(method=method,url=url,headers=h,data=body,verify=v)
             return re
