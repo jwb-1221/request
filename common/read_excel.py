@@ -25,6 +25,7 @@ class ReadExcel():
         self.ncols = self.table.ncols
         #第一个sheet获取的列数赋予ncols
     def read_Excel(self):
+        """读取表格数据"""
         if self.nrows > 1:
             # 获取第一行的内容，列表格式
             # 获取第一行做为keys值
