@@ -27,6 +27,7 @@ align = Alignment(horizontal='center', vertical='center')
 class WriteExcel():
     """文件写入数据"""
     def __init__(self,fileName):
+        """初始化"""
         self.filename = fileName
         if not os.path.exists(self.filename):
             # 文件不存在，则拷贝模板文件至指定报告目录下
@@ -34,29 +35,31 @@ class WriteExcel():
         self.wb = load_workbook(self.filename)
         self.ws = self.wb.active
 
-    def write_result(self,row_n,value):
-        """
-        写入测试结果
-        row_n:数据所在行数
-        value: 测试结果值
-        """
-        # 获数所在行数
-        # L_n = "L" + str(row_n)
-        # M_n = "M" + str(row_n)
-        if value == "pass":
-            self.ws.cell(row_n, 8, value).font = font_GREEN
-
-        elif value == "fail":
-            self.ws.cell(row_n, 8, value).font = font_RED
-        # self.ws[L_n].alignment = align
-        # self.ws[M_n].alignment = align
+    def save_excel(self):
+        """保存文件"""
         self.wb.save(self.filename)
+
+    def write_result_pass(self,row_n,value="pass"):
+        """写入测试成功结果"""
+        self.ws.cell(row_n, 8, value).font = font_GREEN
+        WriteExcel.save_excel(self)
+
+    def write_result_fail(self,row_n,value):
+        """写入测试失败结果"""
+        self.ws.cell(row_n, 8, value).font = font_RED
+        WriteExcel.save_excel(self)
+
+    def write_anomaly(self,row_n,value= None):
+        """如果异常写入值方法"""
+        self.ws.cell(row_n,9, value).font = font_purple#写接口返回信息
+        WriteExcel.save_excel(self)
+
     def write_name(self,row_n,value = name):
         """写入测试员方法"""
         self.ws.cell(row_n,10, value).font = font_purple#写入测试员
-        self.wb.save(self.filename)
-    def write_anomaly(self):
-        """如果异常写入值方法"""
+        WriteExcel.save_excel(self)
+
+
 
 
 # if __name__=='__main__':

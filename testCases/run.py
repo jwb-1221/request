@@ -39,9 +39,9 @@ class API_demo(unittest.TestCase):
         except:#报错就执行
             write_excel.WriteExcel(config.TEST_RESULT).write_result(rowNum + 1, "fail")
         else:#不报错就执行
-            write_excel.WriteExcel(config.TEST_RESULT).write_result(rowNum+1,"pass")
+            write_excel.WriteExcel(config.TEST_RESULT).write_result(rowNum+1,"pass")#写人pass，不赋值则默认为pass
         finally:#无论报不报错都执行
-            write_excel.WriteExcel(config.TEST_RESULT).write_name(rowNum + 1, "bin")
+            write_excel.WriteExcel(config.TEST_RESULT).write_name(rowNum + 1, "bin")#写入测试员，不赋值则默认为bin
         # try:
         #     re.json()["status"] == "0"
         # except AttributeError as e:
