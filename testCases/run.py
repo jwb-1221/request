@@ -26,11 +26,11 @@ class API_demo(unittest.TestCase):
     def test_api(self,data):
         # login.Login().adminlogin()
         rowNum = int(data['ID'].split("_")[1])
-        print("******* 正在执行第"+str(rowNum)+"条用例 ->{0} *********".format(data['模块']))
-        print("请求方式: {0}，请求URL: {1}".format(data['method'],data['url']))
-        print("请求头信息: {0}".format(data['headers']))
-        print("请求参数: {0}".format(data['body']))
-        print("post请求body类型为：{0} ,body内容为：{1}".format(data['type'], data['body']))
+        print("\r******* 正在执行第"+str(rowNum)+"条用例 ->{0} *********".format(data['模块']),end="")
+        print("\r请求方式: {0}，请求URL: {1}".format(data['method'],data['url']),end="")
+        print("\r请求头信息: {0}".format(data['headers']),end="")
+        print("\r请求参数: {0}".format(data['body']),end="")
+        print("\rpost请求body类型为：{0} ,body内容为：{1}".format(data['type'], data['body']),end="")
         # 发送请求
         re = SendRequests.sendRequests(self,self.s,data)
         print(re.json())
