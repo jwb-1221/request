@@ -4,7 +4,6 @@ __author__ = 'BIN'
 
 import os,sys
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-from common import config
 import xlrd
 
 class ReadExcel():
@@ -33,7 +32,7 @@ class ReadExcel():
             listApiData = []
             # 获取每一行的内容，列表格式
             # for col in range(1,self.nrows):
-            for col in range(3,5):
+            for col in range(1,self.nrows):
                 #1：表示的是从第几行开始执行
                 #self.norws:表示的是到第几行
                 values = self.table.row_values(col)
