@@ -44,7 +44,7 @@ class WriteExcel():
         self.ws.cell(row_n, 8, value).font = font_GREEN
         WriteExcel.save_excel(self)
 
-    def write_result_fail(self,row_n,value):
+    def write_result_fail(self,row_n,value="fail"):
         """写入测试失败结果"""
         self.ws.cell(row_n, 8, value).font = font_RED
         WriteExcel.save_excel(self)
