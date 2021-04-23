@@ -14,10 +14,6 @@ login.Login().adminlogin()
 testDATA =read_excel.ReadExcel(config.TEST_TOKEN,"Sheet1").read_Excel()
 @ddt.ddt
 class API_demo(unittest.TestCase):
-    # @classmethod
-    # def setUpClass(cls):
-    #     file.cat_file()
-    #     login.Login().adminlogin()
     def setUp(self):
         self.s = requests.session()
     @ddt.data(*testDATA)
