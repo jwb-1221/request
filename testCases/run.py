@@ -9,7 +9,7 @@ from common.send_requests import *
 from common import new_report,send_mail
 from config import file
 
-file.cat_file()
+file.check_file()
 login.Login().adminlogin()
 testDATA =read_excel.ReadExcel(config.TEST_TOKEN,"Sheet1").read_Excel()
 @ddt.ddt
@@ -35,12 +35,6 @@ class API_demo(unittest.TestCase):
             write_excel.WriteExcel(config.TEST_RESULT).write_result_pass(rowNum+1,"pass")#写人pass，不赋值则默认为pass
         finally:#无论报不报错都执行
             write_excel.WriteExcel(config.TEST_RESULT).write_name(rowNum + 1, "bin")#写入测试员，不赋值则默认为bin
-        # try:
-        #     re.json()["status"] == "0"
-        # except AttributeError as e:
-        #     write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum+1,"fail")
-        # else:
-        #     write_excel.WriteExcel(config.TEST_RESULT).write_data(rowNum+1,"pass")
     def tearDown(self):
         pass
 

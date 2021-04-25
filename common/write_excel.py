@@ -12,17 +12,13 @@ from openpyxl import load_workbook
 from openpyxl.styles import Font,Alignment,colors
 import configparser as cparser
 # --------- 读取config.ini配置文件 ---------------
-# cf = cparser.ConfigParser()
-# cf.read(config.TEST_RESULT,encoding='UTF-8')
-# name = cf.get("tester","name")
-
 cf = cparser.ConfigParser()
 cf.read(config.CONFIG,encoding='utf-8')
 name = cf.get("tester","name")
 font_RED = Font(name='宋体', color='FF0000', bold=True)
 font_GREEN = Font(name='宋体', color='00ff00', bold=True)
 font_purple = Font(name='宋体', color='9900cc', bold=True)
-align = Alignment(horizontal='center', vertical='center')
+# align = Alignment(horizontal='center', vertical='center')
 
 class WriteExcel():
     """文件写入数据"""

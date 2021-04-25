@@ -1,7 +1,7 @@
 import os
 from common import config
 
-def cat_file():
+def check_file():
     """读取文件是否存在"""
     if os.path.exists(config.TEST_RESULT):  # 如果文件存在
         os.remove(config.TEST_RESULT)
