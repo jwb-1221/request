@@ -5,11 +5,10 @@ __author__ = 'BIN'
 import os,sys
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 from common import config
-#导入复制文件模块
-import shutil
+import shutil#导入复制文件模块
 from openpyxl import load_workbook
 #styles:样式，font：字体，Alignment：对齐 阵营 对准
-from openpyxl.styles import Font,Alignment,colors
+from openpyxl.styles import Font,Alignment
 import configparser as cparser
 # --------- 读取config.ini配置文件 ---------------
 cf = cparser.ConfigParser()
