@@ -5,6 +5,7 @@ __author__ = 'BIN'
 import os,sys
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 import xlrd
+from common import config
 
 class ReadExcel():
     """读取excel文件数据"""
@@ -30,19 +31,14 @@ class ReadExcel():
             # 获取第一行做为keys值
             keys = self.table.row_values(0)
             listApiData = []
-            # 获取每一行的内容，列表格式
-            # for col in range(1,self.nrows):
-            for col in range(1,self.nrows):#1：表示的是从第几行开始执行,self.norws:表示的是到第几行
-                #1：表示的是从第几行开始执行
-                #self.norws:表示的是到第几行
+            # for col in range(1,int(input("请输入要执行到第多少条用例:"))):#1：表示的是从第几行开始执行,self.norws:表示的是到第几行
+            for col in range(1,self.nrows):  # 1：表示的是从第几行开始执行,self.norws:表示的是到第几行
                 values = self.table.row_values(col)
-                # keys，values组合转换为字典
-                api_dict = dict(zip(keys, values))
-                listApiData.append(api_dict)
+                # api_dict = dict(zip(keys, values))
+                listApiData.append(dict(zip(keys, values)))
             return listApiData
-            # return (self.nrows[URl])
         else:
             print("表格是空数据!")
-# if __name__=='__main__':
-#     print(ReadExcel(config.TEST_CONFIG).read_Excel())
+if __name__=='__main__':
+    print(ReadExcel(config.TEST_CONFIG).read_Excel())
 
