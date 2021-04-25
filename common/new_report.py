@@ -9,9 +9,10 @@ def new_report(testreport):
 
 def choice_report(testreport):
     """随机获取html文件"""
-    return str(file:=os.path.join(testreport,file:=random.choice(lists:=os.listdir(testreport))))
+    # return str(file:=os.path.join(testreport,file:=random.choice(lists:=os.listdir(testreport))))
+    return str(os.path.join(testreport,random.choice(os.listdir(testreport))))
 
 if __name__=='__main__':
-    print(new_report(config.TEST_REPORT))
+    print(choice_report(config.TEST_REPORT))
 
 
