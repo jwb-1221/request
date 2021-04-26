@@ -4,9 +4,7 @@ __author__ = 'BIN'
 
 def adminurl(api):
     "运营端地址"
-    adminurl = "http://account-admin-webos-test.lastmiles.cn/account-admin-web/"+api
-    return adminurl
+    return "http://account-admin-webos-test.lastmiles.cn/account-admin-web/"+api
 def merchanturl(api):
     """商户端地址"""
-    merchanturl = "http://account-merchant-webos-test.lastmiles.cn/account-merchant-web/"+api
-    return merchanturl
+    return "http://account-merchant-webos-test.lastmiles.cn/account-merchant-web/"+api
